@@ -5,12 +5,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz";
 in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       "${home-manager}/nixos"
     ];
 
@@ -123,7 +123,7 @@ in
   home-manager.users.eric = { pkgs, ... }: {
     programs.git = {
       enable = true;
-      extraConfig = {
+      settings = {
         user.name = "Eric Beijer";
         user.email = "ericbeijer@gmail.com";
       };
