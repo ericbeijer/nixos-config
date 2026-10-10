@@ -4,10 +4,14 @@
 
 { config, lib, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      "${home-manager}/nixos"
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -93,6 +97,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    bat
     bibata-cursors
     git
     gnome-tweaks
@@ -113,6 +118,19 @@
 
   programs.steam = {
     enable = true;
+  };
+
+  home-manager.users.eric = { pkgs, ... }: {
+    programs.git = {
+      enable = true;
+      extraConfig = {
+        user.name = "Eric Beijer";
+        user.email = "ericbeijer@gmail.com";
+      };
+    };
+
+    /* The home.stateVersion option does not have a default and must be set */
+    home.stateVersion = "18.09";
   };
 
   # List services that you want to enable:
