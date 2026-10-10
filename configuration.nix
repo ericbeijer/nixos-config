@@ -137,7 +137,7 @@ in
         fastfetch
       '';
       shellAliases = {
-        rebuild = "nixos-rebuild switch";
+        rebuild = "sudo nixos-rebuild switch";
         up = "sudo nixos-rebuild switch --upgrade";
       };
     };
