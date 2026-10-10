@@ -99,6 +99,7 @@ in
   environment.systemPackages = with pkgs; [
     bat
     bibata-cursors
+    chromium
     git
     gnome-tweaks
     mangohud
