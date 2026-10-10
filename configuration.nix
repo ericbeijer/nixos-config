@@ -100,6 +100,7 @@ in
     bat
     bibata-cursors
     chromium
+    fastfetch
     git
     gnome-tweaks
     mangohud
@@ -127,6 +128,17 @@ in
       settings = {
         user.name = "Eric Beijer";
         user.email = "ericbeijer@gmail.com";
+      };
+    };
+
+    programs.bash = {
+      enable = true;
+      initExtra = ''
+        fastfetch
+      '';
+      shellAliases = {
+        rebuild = "nixos-rebuild switch";
+        up = "sudo nixos-rebuild switch --upgrade";
       };
     };
 
