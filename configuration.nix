@@ -140,6 +140,7 @@ in
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch";
         up = "sudo nixos-rebuild switch --upgrade";
+        clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +3 && sudo nix-collect-garbage && sudo nixos-rebuild switch";
       };
     };
 
