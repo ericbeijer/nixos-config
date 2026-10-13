@@ -103,6 +103,7 @@ in
     fastfetch
     git
     gnome-tweaks
+    librewolf
     mangohud
     veracrypt
     vim
